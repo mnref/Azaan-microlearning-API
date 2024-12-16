@@ -1,0 +1,25 @@
+runtime: python39
+entrypoint: gunicorn -w 4 -k uvicorn.workers.UvicornWorker main:app
+
+instance_class: F4
+
+automatic_scaling:
+  target_cpu_utilization: 0.65
+  min_instances: 1
+  max_instances: 10
+  target_throughput_utilization: 0.6
+
+env_variables:
+  GOOGLE_CREDENTIALS_PATH: "credentials/sa_speecch_demo.json"
+  OPENAI_API_KEY: "your-openai-api-key"
+  GROQ_API_KEY: "your-groq-api-key"
+  MODEL_PATH: "models/wav2vec2-base"
+  EMBEDDING_PATH: "embeddings/ideal_embedding_part_1.npy"
+
+handlers:
+- url: /.*
+  script: auto
+  secure: always
+
+includes:
+- secret.yaml  # For sensitive environment variables
