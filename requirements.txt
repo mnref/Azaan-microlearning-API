@@ -1,0 +1,16 @@
+fastapi  
+uvicorn  
+gunicorn  
+python-multipart  
+google-cloud-speech  
+google-cloud-texttospeech  
+torch  
+transformers  
+librosa  
+groq  
+openai  
+pydub  
+numpy  
+python-dotenv  
+pydantic  
+pydantic-settings  
